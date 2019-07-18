@@ -14,22 +14,12 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: 1
+      inputValue: 1,
+      rating: 1,
+      isSearch: false
     };
     this.props.getAllProperty();
   }
-
-  
-
-  renderCards = data => {
-    return data.map((item, i) => {
-      return (
-        <Col span={8} key={i} style={{ marginTop: "20px" }}>
-          <Card key={i + 1} data={item} />
-        </Col>
-      );
-    });
-  };
 
   onChange = value => {
     this.setState({
@@ -37,9 +27,43 @@ class Home extends Component {
     });
   };
 
+  onHandleChange = value => {
+    this.setState({ rating: value });
+  };
+  onSearch = () => {
+    this.setState({ isSearch: true });
+  };
+
+  renderData = data => {
+    if (this.state.isSearch) {
+      const newData = data.filter(
+        (item, i) =>
+          item.rating >= this.state.rating &&
+          item.price >= this.state.inputValue
+      );
+      console.log(newData);
+
+      return newData.map((item, i) => {
+        return (
+          <Col span={12} key={i} style={{ marginTop: "20px" }}>
+            <Card data={item} />
+          </Col>
+        );
+      });
+    } else {
+      return data.map((item, i) => {
+        return (
+          <Col span={8} key={i} style={{ marginTop: "20px" }}>
+            <Card data={item} />
+          </Col>
+        );
+      });
+    }
+  };
+
   render() {
     const propertyData = this.props.property.property.result || [];
-    
+
     const { inputValue } = this.state;
     return (
       <div>
@@ -73,16 +97,16 @@ class Home extends Component {
                 <Row>
                   <Col span={9} style={{ marginLeft: "10px" }}>
                     <Slider
-                      min={1}
-                      max={20}
+                      min={500000}
+                      max={10000000}
                       onChange={this.onChange}
                       value={inputValue}
                     />
                   </Col>
                   <Col span={2} style={{ paddingTop: "5px" }}>
                     <InputNumber
-                      min={1}
-                      max={20}
+                      min={500000}
+                      max={10000000}
                       style={{ marginLeft: 16 }}
                       value={inputValue}
                       onChange={this.onChange}
@@ -94,16 +118,23 @@ class Home extends Component {
                 <strong>Rating</strong>
               </div>
               <div>
-                <Rate defaultValue={2} />
+                <Rate
+                  defaultValue={this.state.rating}
+                  onChange={this.onHandleChange}
+                />
               </div>
-              <Button type='primary' ghost style={{ marginTop: "2rem" }}>
+              <Button
+                type='primary'
+                ghost
+                style={{ marginTop: "2rem" }}
+                onClick={this.onSearch}>
                 Search
               </Button>
             </Sider>
             <Content style={{ margin: "20px" }}>
               <div className='cardGrid'>
-                <Row gutter={16}>{this.renderCards(propertyData)}</Row>
-                <Row gutter={16} />
+                <Row gutter={16}>{this.renderData(propertyData)}</Row>
+                {/* <Row gutter={16} /> */}
               </div>
             </Content>
           </Layout>

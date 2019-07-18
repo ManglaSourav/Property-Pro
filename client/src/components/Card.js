@@ -36,12 +36,10 @@ class PropertyCard extends Component {
           style={{ width: 300 }}
           cover={<img alt='property Image' src={data.propertyImg} />}>
           <Meta title={data.propertyName} description={data.size} />
-          <div>
-            <Rate disabled defaultValue={data.rating} />
-          </div>
+          <div style={{ color: "red", margin: "3px" }}>{data.price}</div>
           <a
             className='button is-primary'
-            style={{ margin: "5px" }}
+            style={{ marginTop: "5px" }}
             onClick={() =>
               this.props.history.push({
                 pathname: "/property",

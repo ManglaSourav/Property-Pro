@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Descriptions, Layout, List, Typography, Icon } from "antd";
+import { Descriptions, List, Typography, Icon } from "antd";
 import { withRouter } from "react-router-dom";
-import Nav from "./Nav";
 import Header from "./Header";
-const data = ["AC", "Swimming Pool", "Parking", "Electricity."];
 
 class ViewProperty extends Component {
   render() {
