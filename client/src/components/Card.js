@@ -19,7 +19,7 @@ class PropertyCard extends Component {
             onClick={() =>
               this.props.history.push({
                 pathname: "/edit",
-                state: { property: data }
+                state: { property: data, from: "edit" }
               })
             }>
             Edit

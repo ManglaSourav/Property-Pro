@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import jwtDecode from "jwt-decode";
-import AdminHandlers from "./AdminHandler"
 const Button = styled.a`
   color: #ad8d67;
   background: #6e7880;

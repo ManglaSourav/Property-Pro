@@ -6,8 +6,6 @@ import { Provider } from "react-redux";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Property from "./components/ViewProperty";
-import Add from "./components/CreateProperty";
-import EditProperty from "./components/EditProperty";
 import "antd/dist/antd.css";
 import AdminHandler from "./components/AdminHandler";
 
