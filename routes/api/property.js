@@ -23,8 +23,8 @@ router.post("/create", (req, res) => {
   });
   newProperty
     .save()
-    .then(() => res.send({ msg: "New Property Saved Sucessfully" }))
-    .catch(err => res.json({ msg: err.error }));
+    .then(() => res.send(" Property Added Sucessfully"))
+    .catch(err => res.json(err));
 });
 
 // @route   POST /api/property/edit/:id
@@ -36,7 +36,7 @@ router.post("/edit/:id", (req, res) => {
     doc
   ) {
     if (err) return res.send(500, { error: err });
-    return res.send({ msg: "Edit Sucessfully" });
+    return res.send("Property is edited sucessfully");
   });
 });
 
