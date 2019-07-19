@@ -46,17 +46,23 @@
   width: 100px;
 }
 
-.cardGrid{
-  display: flex;
-}
-.amenitiesList{
-  margin:3rem;
-  margin-top:1rem;
-}
-.contact{
-  margin: 3rem;
-}
-
 .propertyForm{
   margin: 3rem;
+}
+.cardGrid {
+  display: flex;
+}
+.amenitiesList {
+  margin: 3rem;
+  margin-top: 1rem;
+}
+.contact {
+  margin: 3rem;
+}
+.propertyForm {
+  margin: 3rem;
+}
+.cardTitle{
+  display: flex;
+  justify-content: space-between
 }

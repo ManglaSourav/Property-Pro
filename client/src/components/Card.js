@@ -35,8 +35,19 @@ class PropertyCard extends Component {
         <Card
           style={{ width: 300 }}
           cover={<img alt='property Image' src={data.propertyImg} />}>
-          <Meta title={data.propertyName} description={data.size} />
-          <div style={{ color: "red", marginTop: "3px" }}>Rs.{data.price}</div>
+          <div className='cardTitle'>
+            <Meta title={data.propertyName} description={data.size} />
+            <div>
+              {data.rating}
+              <i
+                style={{ marginLeft: "3px", color: "#27A745" }}
+                class='fas fa-star'
+              />
+            </div>
+          </div>
+          <div style={{ color: "#0A0B06", marginTop: "10px" }}>
+            Rs. {data.price}
+          </div>{" "}
           <a
             className='button is-primary'
             style={{ marginTop: "5px" }}
