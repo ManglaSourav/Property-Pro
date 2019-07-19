@@ -28,7 +28,10 @@ function Header(props) {
           <Button
             className='button'
             onClick={e => {
-              props.history.push("/add");
+              props.history.push({
+                pathname: "/add",
+                state: { to: "add" }
+              });
             }}>
             Add Property
           </Button>

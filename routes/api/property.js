@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 // @desc    create a new property
 // @access  Public
 router.post("/create", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const amenities = req.body.amenities;
   const newProperty = new Property({
     amenities: amenities.split(","),

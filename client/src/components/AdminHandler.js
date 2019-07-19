@@ -30,7 +30,7 @@ class AdminHandler extends Component {
     console.log(decoded.type);
     if (decoded.type !== "admin") {
       this.props.history.push("/");
-    } else if (this.props.location.state.from === "edit") {
+    } else if (this.props.location.state.to === "edit") {
       let data = this.props.location.state.property;
       this.setState({
         propertyName: data.propertyName,
@@ -61,9 +61,11 @@ class AdminHandler extends Component {
       location: this.state.location
     };
 
-    if (this.props.location.state.from === "edit") {
+    if (this.props.location.state.to === "edit") {
       this.props.editProperty(property, this.state.id, this.props.history);
     } else {
+      console.log("testt");
+
       this.props.createProperties(property, this.props.history);
     }
   };
