@@ -68,7 +68,7 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
-        return res.status(400).json(errors);
+        return res.status(400).json("error in login");
       }
     });
   });
