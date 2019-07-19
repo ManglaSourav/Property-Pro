@@ -9,7 +9,7 @@ import Property from "./components/ViewProperty";
 import Add from "./components/CreateProperty";
 import EditProperty from "./components/EditProperty";
 import "antd/dist/antd.css";
-import AdminHandler from "./components/AdminHandler"
+import AdminHandler from "./components/AdminHandler";
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/property' component={Property} />
-          <Route exact path='/add' component={Add} />
-          <Route exact path='/edit' component={EditProperty} />
+          <Route exact path='/add' component={AdminHandler} />
+          <Route exact path='/edit' component={AdminHandler} />
         </div>
       </Router>
     </Provider>
