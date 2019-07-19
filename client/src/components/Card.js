@@ -36,7 +36,7 @@ class PropertyCard extends Component {
           style={{ width: 300 }}
           cover={<img alt='property Image' src={data.propertyImg} />}>
           <Meta title={data.propertyName} description={data.size} />
-          <div style={{ color: "red", margin: "3px" }}>{data.price}</div>
+          <div style={{ color: "red", marginTop: "3px" }}>Rs.{data.price}</div>
           <a
             className='button is-primary'
             style={{ marginTop: "5px" }}
