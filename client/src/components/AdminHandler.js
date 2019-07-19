@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { createProperties } from "../actions/propertyActions";
+import { editProperty } from "../actions/propertyActions";
 import Header from "./Header";
 import jwtDecode from "jwt-decode";
 
-class CreateProperty extends Component {
+class AdminHandler extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,12 +30,26 @@ class CreateProperty extends Component {
     console.log(decoded.type);
     if (decoded.type !== "admin") {
       this.props.history.push("/");
+    } else if (this.props.from === "edit") {
+      let data = this.props.location.state.property;
+      this.setState({
+        propertyName: data.propertyName,
+        desc: data.desc,
+        rating: data.rating,
+        price: data.price,
+        ownerName: data.ownerName,
+        ownerNumber: data.ownerNumber,
+        amenities: data.amenities,
+        size: data.size,
+        location: data.location,
+        id: data._id
+      });
     }
   }
 
   onSubmit = e => {
     e.preventDefault();
-    const newProperty = {
+    const property = {
       propertyName: this.state.propertyName,
       desc: this.state.desc,
       rating: this.state.rating,
@@ -45,7 +60,11 @@ class CreateProperty extends Component {
       size: this.state.size,
       location: this.state.location
     };
-    this.props.createProperties(newProperty, this.props.history);
+    if (this.props.from === "edit") {
+      this.props.editProperty(property, this.state.id, this.props.history);
+    } else {
+      this.props.createProperties(property, this.props.history);
+    }
   };
 
   render() {
@@ -201,5 +220,5 @@ class CreateProperty extends Component {
 
 export default connect(
   null,
-  { createProperties }
-)(withRouter(CreateProperty));
+  { createProperties, editProperty }
+)(withRouter(AdminHandler));

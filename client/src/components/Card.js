@@ -9,7 +9,7 @@ class PropertyCard extends Component {
   renderEdit = data => {
     if (localStorage.getItem("jwtToken")) {
       const decoded = jwtDecode(localStorage.getItem("jwtToken"));
-      console.log(decoded.type);
+      // console.log(decoded.type);
 
       if (decoded.type === "admin") {
         return (

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import jwtDecode from "jwt-decode";
+import AdminHandlers from "./AdminHandler"
 const Button = styled.a`
   color: #ad8d67;
   background: #6e7880;
@@ -22,7 +23,7 @@ function Header(props) {
   const renderAddProperty = () => {
     if (localStorage.getItem("jwtToken")) {
       const decoded = jwtDecode(localStorage.getItem("jwtToken"));
-      console.log(decoded.type);
+      // console.log(decoded.type);
       if (decoded.type === "admin") {
         return (
           <Button

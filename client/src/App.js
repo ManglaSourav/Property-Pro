@@ -9,6 +9,7 @@ import Property from "./components/ViewProperty";
 import Add from "./components/CreateProperty";
 import EditProperty from "./components/EditProperty";
 import "antd/dist/antd.css";
+import AdminHandler from "./components/AdminHandler"
 
 function App() {
   return (

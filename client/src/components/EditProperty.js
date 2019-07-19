@@ -3,29 +3,48 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { editProperty } from "../actions/propertyActions";
 import Header from "./Header";
+import jwtDecode from "jwt-decode";
 
 class EditProperty extends Component {
   constructor(props) {
     super(props);
-    let data = this.props.location.state.property;
-    console.log(data);
 
     this.state = {
-      propertyName: data.propertyName,
-      desc: data.desc,
-      rating: data.rating,
-      price: data.price,
-      ownerName: data.ownerName,
-      ownerNumber: data.ownerNumber,
-      amenities: data.amenities,
-      size: data.size,
-      location: data.location,
-      id: data._id
+      propertyName: "",
+      desc: "",
+      rating: 1,
+      price: "",
+      ownerName: "",
+      ownerNumber: "",
+      amenities: "",
+      size: "1 BHK",
+      location: ""
     };
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  componentDidMount() {
+    const decoded = jwtDecode(localStorage.getItem("jwtToken"));
+    console.log(decoded.type);
+    if (decoded.type !== "admin") {
+      this.props.history.push("/");
+    } else {
+      let data = this.props.location.state.property;
+      this.setState({
+        propertyName: data.propertyName,
+        desc: data.desc,
+        rating: data.rating,
+        price: data.price,
+        ownerName: data.ownerName,
+        ownerNumber: data.ownerNumber,
+        amenities: data.amenities,
+        size: data.size,
+        location: data.location,
+        id: data._id
+      });
+    }
+  }
 
   onSubmit = e => {
     e.preventDefault();

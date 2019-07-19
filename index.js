@@ -5,7 +5,6 @@ const users = require("./routes/api/users");
 const property = require("./routes/api/property");
 const app = express();
 const morgan = require("morgan");
-require("./config/passport.js");
 
 app.use(cors());
 app.use(express.json());
