@@ -36,12 +36,13 @@ class Home extends Component {
 
   renderData = data => {
     if (this.state.isSearch) {
-      const newData = data.filter(
-        (item, i) =>
-          item.rating <= this.state.rating &&
-          item.price <= this.state.inputValue
-      );
-      console.log(newData);
+      const newData = data.filter((item, i) => {
+        return (
+          item.price <= this.state.inputValue ||
+          item.rating <= this.state.rating
+        );
+      });
+      // console.log("from filter", newData);
 
       return newData.map((item, i) => {
         return (
@@ -128,7 +129,7 @@ class Home extends Component {
                 ghost
                 style={{ marginTop: "2rem" }}
                 onClick={this.onSearch}>
-                Search
+                Filter
               </Button>
             </Sider>
             <Content style={{ margin: "20px" }}>

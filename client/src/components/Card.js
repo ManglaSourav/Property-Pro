@@ -41,7 +41,7 @@ class PropertyCard extends Component {
               {data.rating}
               <i
                 style={{ marginLeft: "3px", color: "#27A745" }}
-                class='fas fa-star'
+                className='fas fa-star'
               />
             </div>
           </div>
