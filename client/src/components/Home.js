@@ -38,8 +38,8 @@ class Home extends Component {
     if (this.state.isSearch) {
       const newData = data.filter(
         (item, i) =>
-          item.rating >= this.state.rating &&
-          item.price >= this.state.inputValue
+          item.rating <= this.state.rating &&
+          item.price <= this.state.inputValue
       );
       console.log(newData);
 
